@@ -1,0 +1,195 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0087)http://scriptasylum.com/tutorials/infix_postfix/algorithms/postfix-evaluation/index.htm -->
+<HTML><HEAD><TITLE>Postfix Evaluation</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<STYLE type=text/css>.header {
+	FONT-WEIGHT: bold; FONT-SIZE: 25pt; FILTER: Shadow(direction=45, color=#003399); WIDTH: 100%; COLOR: #efeff5; FONT-FAMILY: verdana,arial,helvetica
+}
+.link {
+	FONT-WEIGHT: bold; COLOR: #000000
+}
+.link:hover {
+	FONT-WEIGHT: bold; COLOR: #666666
+}
+.link2 {
+	COLOR: #ffffff
+}
+.link2:hover {
+	COLOR: #ffeedd
+}
+</STYLE>
+
+<META content="MSHTML 6.00.2900.2180" name=GENERATOR></HEAD>
+<BODY bgColor=#ffffff>
+<TABLE cellSpacing=0 cellPadding=0 width=596 align=center bgColor=#0099ff>
+  <TBODY>
+  <TR>
+    <TD></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width=598 align=center bgColor=#0099ff>
+  <TBODY>
+  <TR>
+    <TD></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=2 width=600 align=center bgColor=#0099ff>
+  <TBODY>
+  <TR>
+    <TD>
+      <TABLE height=50 width="100%" bgColor=#0099ff>
+        <TBODY>
+        <TR>
+          <TD><SPAN class=header>Postfix Evaluation</SPAN></TD></TR></TBODY></TABLE>
+      <TABLE width="100%" bgColor=#fafaff>
+        <TBODY>
+        <TR>
+          <TD><FONT face=verdana,arial,helvetica color=#000000 
+            size=-1><BR><B>Infix Expression :</B> <BR><BR>Any expression in the 
+            standard form like "2*3-4/5" is an Infix(Inorder) 
+            expression.<BR><BR><B>Postfix Expression :</B> <BR><BR>The 
+            Postfix(Postorder) form of the above expression is 
+            "23*45/-".<BR><BR><B>Postfix Evaluation :</B> <BR><BR>In normal 
+            algebra we use the infix notation like a+b*c. The corresponding 
+            postfix notation is abc*+. The algorithm for the conversion is as 
+            follows : 
+            <UL type=square>
+              <LI>Scan the <CODE><FONT size=2>Postfix string</FONT></CODE> from 
+              left to right. 
+              <LI>Initialise an empty stack. 
+              <LI>If the scannned character is an operand, add it to the 
+              <CODE><FONT size=2>stack</FONT></CODE>. If the scanned character 
+              is an operator, there will be atleast two operands in the 
+              <CODE><FONT size=2>stack</FONT></CODE>.
+              <UL>
+                <LI>If the scanned character is an Operator, then we store the 
+                top most element of the stack(<CODE><FONT 
+                size=2>topStack</FONT></CODE>) in a variable <CODE><FONT 
+                size=2>temp</FONT></CODE>. Pop the stack. Now evaluate 
+                <CODE><FONT size=2>topStack</FONT></CODE>(Operator)<CODE><FONT 
+                size=2>temp</FONT></CODE>. Let the result of this operation be 
+                <CODE><FONT size=2>retVal</FONT></CODE>. Pop the stack and Push 
+                <CODE><FONT size=2>retVal</FONT></CODE> into the 
+              stack.</LI></UL>Repeat this step till all the characters are 
+              scanned. 
+              <LI>After all characters are scanned, we will have only one 
+              element in the stack. Return <CODE><FONT 
+              size=2>topStack</FONT></CODE>. </LI></UL><B>Example :</B> 
+            <BR><BR>Let us see how the above algorithm will be imlemented using 
+            an example. <BR><BR>Postfix String : 123*+4- <BR><BR>Initially the 
+            Stack is empty. Now, the first three characters scanned are 1,2 and 
+            3, which are operands. Thus they will be pushed into the stack in 
+            that order. <BR><BR>
+            <TABLE width=400 align=center>
+              <TBODY>
+              <TR>
+                <TD align=middle><IMG 
+                  src="Postfix Evaluation_files/img1.gif"><BR><FONT 
+                  size=-2><B>Stack</B></FONT></TD>
+                <TD align=middle><IMG 
+                  src="Postfix Evaluation_files/img2.gif"><BR><FONT 
+                  size=-2><B>Expression</B></FONT></TD></TR></TBODY></TABLE><BR>Next 
+            character scanned is "*", which is an operator. Thus, we pop the top 
+            two elements from the stack and perform the "*" operation with the 
+            two operands. The second operand will be the first element that is 
+            popped. <BR><BR>
+            <TABLE width=400 align=center>
+              <TBODY>
+              <TR>
+                <TD align=middle><IMG 
+                  src="Postfix Evaluation_files/img3.gif"><BR><FONT 
+                  size=-2><B>Stack</B></FONT></TD>
+                <TD align=middle><IMG 
+                  src="Postfix Evaluation_files/img4.gif"><BR><FONT 
+                  size=-2><B>Expression</B></FONT></TD></TR></TBODY></TABLE><BR>The 
+            value of the expression(2*3) that has been evaluated(6) is pushed 
+            into the stack. <BR><BR>
+            <TABLE width=400 align=center>
+              <TBODY>
+              <TR>
+                <TD align=middle><IMG 
+                  src="Postfix Evaluation_files/img5.gif"><BR><FONT 
+                  size=-2><B>Stack</B></FONT></TD>
+                <TD align=middle><IMG 
+                  src="Postfix Evaluation_files/img2.gif"><BR><FONT 
+                  size=-2><B>Expression</B></FONT></TD></TR></TBODY></TABLE><BR>Next 
+            character scanned is "+", which is an operator. Thus, we pop the top 
+            two elements from the stack and perform the "+" operation with the 
+            two operands. The second operand will be the first element that is 
+            popped. <BR><BR>
+            <TABLE width=400 align=center>
+              <TBODY>
+              <TR>
+                <TD align=middle><IMG 
+                  src="Postfix Evaluation_files/img7.gif"><BR><FONT 
+                  size=-2><B>Stack</B></FONT></TD>
+                <TD align=middle><IMG 
+                  src="Postfix Evaluation_files/img8.gif"><BR><FONT 
+                  size=-2><B>Expression</B></FONT></TD></TR></TBODY></TABLE><BR>The 
+            value of the expression(1+6) that has been evaluated(7) is pushed 
+            into the stack. <BR><BR>
+            <TABLE width=400 align=center>
+              <TBODY>
+              <TR>
+                <TD align=middle><IMG 
+                  src="Postfix Evaluation_files/img9.gif"><BR><FONT 
+                  size=-2><B>Stack</B></FONT></TD>
+                <TD align=middle><IMG 
+                  src="Postfix Evaluation_files/img2.gif"><BR><FONT 
+                  size=-2><B>Expression</B></FONT></TD></TR></TBODY></TABLE><BR>Next 
+            character scanned is "4", which is added to the stack. <BR><BR>
+            <TABLE width=400 align=center>
+              <TBODY>
+              <TR>
+                <TD align=middle><IMG 
+                  src="Postfix Evaluation_files/img11.gif"><BR><FONT 
+                  size=-2><B>Stack</B></FONT></TD>
+                <TD align=middle><IMG 
+                  src="Postfix Evaluation_files/img2.gif"><BR><FONT 
+                  size=-2><B>Expression</B></FONT></TD></TR></TBODY></TABLE><BR>Next 
+            character scanned is "-", which is an operator. Thus, we pop the top 
+            two elements from the stack and perform the "-" operation with the 
+            two operands. The second operand will be the first element that is 
+            popped. <BR><BR>
+            <TABLE width=400 align=center>
+              <TBODY>
+              <TR>
+                <TD align=middle><IMG 
+                  src="Postfix Evaluation_files/img7.gif"><BR><FONT 
+                  size=-2><B>Stack</B></FONT></TD>
+                <TD align=middle><IMG 
+                  src="Postfix Evaluation_files/img14.gif"><BR><FONT 
+                  size=-2><B>Expression</B></FONT></TD></TR></TBODY></TABLE><BR>The 
+            value of the expression(7-4) that has been evaluated(3) is pushed 
+            into the stack. <BR><BR>
+            <TABLE width=400 align=center>
+              <TBODY>
+              <TR>
+                <TD align=middle><IMG 
+                  src="Postfix Evaluation_files/img15.gif"><BR><FONT 
+                  size=-2><B>Stack</B></FONT></TD>
+                <TD align=middle><IMG 
+                  src="Postfix Evaluation_files/img2.gif"><BR><FONT 
+                  size=-2><B>Expression</B></FONT></TD></TR></TBODY></TABLE><BR>Now, 
+            since all the characters are scanned, the remaining element in the 
+            stack (there will be only one element in the stack) will be 
+            returned. <BR><BR>End result :
+            <UL>
+              <LI>Postfix String : 123*+4-
+              <LI>Result : 3</LI></UL></FONT></TD></TR></TBODY></TABLE>
+      <TABLE height=2 cellSpacing=0 cellPadding=0 width="100%" align=center 
+      bgColor=#0099ff>
+        <TBODY>
+        <TR>
+          <TD></TD></TR></TBODY></TABLE>
+      <TABLE width="100%" bgColor=#0099ff>
+        <TBODY>
+        <TR>
+          <TD><FONT face=verdana,arial,helvetica color=#ffffff size=-1>© 2002 
+            <A class=link2 title="Click here to visit Qiksearch.com" 
+            href="http://www.qiksearch.com/">Premshree 
+        Pillai</A>.</FONT></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width=598 align=center bgColor=#0099ff>
+  <TBODY>
+  <TR>
+    <TD></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width=596 align=center bgColor=#0099ff>
+  <TBODY>
+  <TR>
+    <TD></TD></TR></TBODY></TABLE></BODY></HTML>
